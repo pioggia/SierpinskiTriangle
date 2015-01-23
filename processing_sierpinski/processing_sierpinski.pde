@@ -1,25 +1,35 @@
+int h = (int)Math.random()*255+100;
+int s = (int)Math.random()*255+100;
+int b = 230;
+int length = 300;
+int width = 300;
 public void setup()
 {
-  size(100, 100);
+  colorMode(HSB);
+  size(length, width);
   background(10, 10, 15);
-  sierpinski(10, 90, 50);
 }
 public void draw()
 {
-
+  background(10, 10, 15);
+  sierpinski(length/10, width-width/10, width/10*8);
+  s=s+(int)Math.random()*1;
+  h=h-(int)Math.random()*10;
 }
 public void mouseDragged()//optional
 {
-
+  
 }
 public void sierpinski(int x, int y, int len) 
 {
   if(len >= 20)
   {
-    fill(10, 10, 15);
-    triangle(x, y, x+len/2, y, x+len/2, y-len/2);
-    sierpinski(x/2, y/2, len/2);
-    sierpinski(x/4
+    noFill();
+    stroke(h, s, b);
+    strokeWeight(1);
+    sierpinski(x, y, len/2);
+    sierpinski(x+len/2, y, len/2);
+    sierpinski(x+len/4, y-len/2, len/2);
   }
   else 
   {
